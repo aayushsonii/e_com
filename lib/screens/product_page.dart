@@ -54,14 +54,11 @@ class _ProductPageState extends State<ProductPage> {
               }
 
               if (snapshot.connectionState == ConnectionState.done) {
-                // Firebase Document Data Map
                 Map<String, dynamic> documentData = snapshot.data.data();
 
-                // List of images
                 List imageList = documentData['images'];
                 List productSizes = documentData['size'];
 
-                // Set an initial size
                 _selectedProductSize = productSizes[0];
 
                 return ListView(
@@ -132,7 +129,8 @@ class _ProductPageState extends State<ProductPage> {
                           GestureDetector(
                             onTap: () async {
                               await _addToSaved();
-                              Scaffold.of(context).showSnackBar(_snackBar);
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(_snackBar);
                             },
                             child: Container(
                               width: 65.0,
@@ -154,7 +152,8 @@ class _ProductPageState extends State<ProductPage> {
                             child: GestureDetector(
                               onTap: () async {
                                 await _addToCart();
-                                Scaffold.of(context).showSnackBar(_snackBar);
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(_snackBar);
                               },
                               child: Container(
                                 height: 65.0,
@@ -183,7 +182,6 @@ class _ProductPageState extends State<ProductPage> {
                 );
               }
 
-              // Loading State
               return Scaffold(
                 body: Center(
                   child: CircularProgressIndicator(),

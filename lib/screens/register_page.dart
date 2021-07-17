@@ -10,7 +10,6 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  // Build an alert dialog to display some errors.
   Future<void> _alertDialogBuilder(String error) async {
     return showDialog(
         context: context,
@@ -22,7 +21,7 @@ class _RegisterPageState extends State<RegisterPage> {
               child: Text(error),
             ),
             actions: [
-              FlatButton(
+              TextButton(
                 child: Text("Close Dialog"),
                 onPressed: () {
                   Navigator.pop(context);
@@ -33,7 +32,6 @@ class _RegisterPageState extends State<RegisterPage> {
         });
   }
 
-  // Create a new user account
   Future<String> _createAccount() async {
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -52,36 +50,28 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   void _submitForm() async {
-    // Set the form to loading state
     setState(() {
       _registerFormLoading = true;
     });
 
-    // Run the create account method
     String _createAccountFeedback = await _createAccount();
 
-    // If the string is not null, we got error while create account.
     if (_createAccountFeedback != null) {
       _alertDialogBuilder(_createAccountFeedback);
 
-      // Set the form to regular state [not loading].
       setState(() {
         _registerFormLoading = false;
       });
     } else {
-      // The String was null, user is logged in.
       Navigator.pop(context);
     }
   }
 
-  // Default Form Loading State
   bool _registerFormLoading = false;
 
-  // Form Input Field Values
   String _registerEmail = "";
   String _registerPassword = "";
 
-  // Focus Node for input fields
   FocusNode _passwordFocusNode;
 
   @override

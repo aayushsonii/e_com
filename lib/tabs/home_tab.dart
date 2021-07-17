@@ -23,9 +23,7 @@ class HomeTab extends StatelessWidget {
                 );
               }
 
-              // Collection Data ready to display
               if (snapshot.connectionState == ConnectionState.done) {
-                // Display the data inside a list view
                 return ListView(
                   padding: EdgeInsets.only(
                     top: 108.0,
@@ -34,7 +32,7 @@ class HomeTab extends StatelessWidget {
                   children: snapshot.data.docs.map((document) {
                     return ProductCard(
                       title: document['name'],
-                      imageUrl: document['images'][0],
+                      imageUrl: document[0]['images'],
                       price: "\$${document['price']}",
                       productId: document.id,
                     );
@@ -42,7 +40,6 @@ class HomeTab extends StatelessWidget {
                 );
               }
 
-              // Loading State
               return Scaffold(
                 body: Center(
                   child: CircularProgressIndicator(),

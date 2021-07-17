@@ -22,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Text(error),
             ),
             actions: [
-              FlatButton(
+              TextButton(
                 child: Text("Close Dialog"),
                 onPressed: () {
                   Navigator.pop(context);
@@ -33,7 +33,6 @@ class _LoginPageState extends State<LoginPage> {
         });
   }
 
-  // Create a new user account
   Future<String> _loginAccount() async {
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -52,33 +51,26 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _submitForm() async {
-    // Set the form to loading state
     setState(() {
       _loginFormLoading = true;
     });
 
-    // Run the create account method
     String _loginFeedback = await _loginAccount();
 
-    // If the string is not null, we got error while create account.
     if (_loginFeedback != null) {
       _alertDialogBuilder(_loginFeedback);
 
-      // Set the form to regular state [not loading].
       setState(() {
         _loginFormLoading = false;
       });
     }
   }
 
-  // Default Form Loading State
   bool _loginFormLoading = false;
 
-  // Form Input Field Values
   String _loginEmail = "";
   String _loginPassword = "";
 
-  // Focus Node for input fields
   FocusNode _passwordFocusNode;
 
   @override

@@ -31,9 +31,7 @@ class _CartPageState extends State<CartPage> {
                 );
               }
 
-              // Collection Data ready to display
               if (snapshot.connectionState == ConnectionState.done) {
-                // Display the data inside a list view
                 return ListView(
                   padding: EdgeInsets.only(
                     top: 108.0,
@@ -143,7 +141,6 @@ class _CartPageState extends State<CartPage> {
                 );
               }
 
-              // Loading State
               return Scaffold(
                 body: Center(
                   child: CircularProgressIndicator(),

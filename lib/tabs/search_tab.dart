@@ -43,9 +43,7 @@ class _SearchTabState extends State<SearchTab> {
                   );
                 }
 
-                // Collection Data ready to display
                 if (snapshot.connectionState == ConnectionState.done) {
-                  // Display the data inside a list view
                   return ListView(
                     padding: EdgeInsets.only(
                       top: 128.0,
@@ -62,7 +60,6 @@ class _SearchTabState extends State<SearchTab> {
                   );
                 }
 
-                // Loading State
                 return Scaffold(
                   body: Center(
                     child: CircularProgressIndicator(),
