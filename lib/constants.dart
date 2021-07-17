@@ -1,9 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-final String kRegistrationScreenRoute = 'RegistrationScreen';
-final String kLogInScreenRoute = 'LogInScreen';
-final String kLandingScreenRoute = 'LandingScreen';
-final kRegularHeading =
-    TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0, color: Colors.black);
-final kBoldHeading =
-    TextStyle(fontWeight: FontWeight.w600, fontSize: 25.0, color: Colors.black);
+class Constants {
+  static const regularHeading =
+      TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600, color: Colors.black);
+
+  static const boldHeading =
+      TextStyle(fontSize: 22.0, fontWeight: FontWeight.w600, color: Colors.black);
+
+  static const regularDarkText =
+      TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600, color: Colors.black);
+}
